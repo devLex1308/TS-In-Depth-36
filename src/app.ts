@@ -169,8 +169,7 @@ function getProperty(book: Book, prop: BookProperties): any {
   const value = book[prop];
   return typeof value === 'function' ? value.name : value;
 }
-
-class ReferenceItem {
+abstract class ReferenceItem {
   // title: string;
   // year: number;
 
@@ -208,7 +207,7 @@ class ReferenceItem {
     this._publisher = newPublisher;
   }
 
-
+  abstract printCatation(): void;
 }
 
 class Encyclopedia extends ReferenceItem {
@@ -220,6 +219,10 @@ class Encyclopedia extends ReferenceItem {
   override printItem(): void {
     super.printItem();
     console.log(`Edition: ${this.edition} ${this.year}`);
+  }
+
+  printCatation(): void {
+    console.log(`${this.title} - ${this.year}`);
   }
 }
 
@@ -323,13 +326,14 @@ class Encyclopedia extends ReferenceItem {
 
 // Task 05.01
 
-const ref = new ReferenceItem(1, 'Learn TypeScript', 2022);
-console.log({ ref });
-ref.printItem();
-ref.publisher = 'abc';
-console.log(ref.publisher);
-console.log(ref.getID());
+// const ref = new ReferenceItem(1, 'Learn TypeScript', 2022);
+// console.log({ ref });
+// ref.printItem();
+// ref.publisher = 'abc';
+// console.log(ref.publisher);
+// console.log(ref.getID());
 
 const refBook = new Encyclopedia(1, 'Learn TypeScript', 2022, 3);
 console.log({ refBook });
 refBook.printItem();
+refBook.printCatation();
