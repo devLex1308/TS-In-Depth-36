@@ -55,9 +55,19 @@ function logBookTitles(books: string[]): void {
   books.forEach(book => console.log(book));
 }
 
+function getBookAuthorByIndex(index: number): [title: string, author: string] {
+  const books = getAllBooks();
+  const { title = 'not found', author = 'not found' } = books[index] || {}
+  return [title, author]
+}
+
 // =====================================================
 // Task 02.02
 
 // logFirstAvailable(getAllBooks());
 
-logBookTitles(getBookTitlesByCategory(Category.Javascript));
+
+
+// logBookTitles(getBookTitlesByCategory(Category.Javascript));
+
+console.log(getBookAuthorByIndex(2));
