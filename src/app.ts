@@ -1,3 +1,4 @@
+/* eslint-disable no-redeclare */
 showHello('greeting', 'TypeScript');
 
 function showHello(divName: string, name: string) {
@@ -101,6 +102,30 @@ function сheckoutBooks(customer: string, ...bookIds: number[]): string[] {
     .map(book => book.title);
 }
 
+function getTitles(author: string): string[];
+function getTitles(available: boolean): string[];
+function getTitles(id: number, available: boolean): string[];
+function getTitles(...args: unknown[]): string[] {
+  const books = getAllBooks();
+
+  if (args.length === 1) {
+    const [arg] = args;
+
+    if (typeof arg === 'string') {
+      return books.filter(({ author }) => author === arg).map(({ title }) => title);
+    } else if (typeof arg === 'boolean') {
+      return books.filter(({ available }) => available === arg).map(({ title }) => title);
+    }
+
+  } else if (args.length === 2) {
+    const [idArg, availableArg] = args;
+    if (typeof idArg === 'number' && typeof availableArg === 'boolean') {
+      return books.filter(({ id, available }) => id === idArg && available === availableArg).map(({ title }) => title);
+    }
+  }
+  return [];
+}
+
 // =====================================================
 // Task 02.02
 
@@ -121,14 +146,18 @@ function сheckoutBooks(customer: string, ...bookIds: number[]): string[] {
 
 // console.log(idGenerator('Tania', 27));
 
-createCustomer('Taras');
-createCustomer('Lesia', 17);
-createCustomer('Ivan', 60, 'Ivano-Arankivsk');
+// createCustomer('Taras');
+// createCustomer('Lesia', 17);
+// createCustomer('Ivan', 60, 'Ivano-Arankivsk');
 
-getBookTitlesByCategory();
-logFirstAvailable();
+// getBookTitlesByCategory();
+// logFirstAvailable();
 
-getBookByID(1);
+// getBookByID(1);
 
-const myBooks: string[] = сheckoutBooks('Tania', 1, 2, 4);
-console.log({ myBooks });
+// const myBooks: string[] = сheckoutBooks('Tania', 1, 2, 4);
+// console.log({ myBooks });
+
+// Task 03.03
+
+console.log(getTitles(1, true));
