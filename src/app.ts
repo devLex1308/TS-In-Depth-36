@@ -183,7 +183,7 @@ class ReferenceItem {
   #id: number;
   static departmen: string = 'Reserch Department';
 
-  constructor(id: number, public title: string, private year: number) {
+  constructor(id: number, public title: string, protected year: number) {
     console.log('Creating a new ReferenceItem');
     this.#id = id;
   }
@@ -209,6 +209,18 @@ class ReferenceItem {
   }
 
 
+}
+
+class Encyclopedia extends ReferenceItem {
+  constructor(id: number, title: string, year: number, public edition: number) {
+    super(id, title, year);
+
+  }
+
+  override printItem(): void {
+    super.printItem();
+    console.log(`Edition: ${this.edition} ${this.year}`);
+  }
 }
 
 // =====================================================
@@ -317,3 +329,7 @@ ref.printItem();
 ref.publisher = 'abc';
 console.log(ref.publisher);
 console.log(ref.getID());
+
+const refBook = new Encyclopedia(1, 'Learn TypeScript', 2022, 3);
+console.log({ refBook });
+refBook.printItem();
