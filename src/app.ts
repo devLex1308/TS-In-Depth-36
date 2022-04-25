@@ -5,9 +5,13 @@ function showHello(divName: string, name: string) {
   elt.innerText = `Hello from ${name}`;
 }
 
-enum Category { A = 'JavaScript', B = 'CSS', C = 'HTML' }
+enum Category1 { A = 'JavaScript', B = 'CSS', C = 'HTML' }
 
-type Category1 = {
+enum Category {
+  'Javascript', 'CSS', 'HTML', 'TypeScript', 'Angular'
+};
+
+type Category2 = {
   A: 'JavaScript';
   B: 'CSS';
   C: 'HTML';
