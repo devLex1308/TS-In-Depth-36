@@ -31,3 +31,16 @@ function getAllBooks(): Book[] {
 
   return books;
 }
+
+function logFirstAvailable(books: Book[]): void {
+  console.log(`Total number of books: ${books.length}`);
+
+  const { title = 'Not found' } = books.find(book => book.available) || {};
+
+  console.log(`First availeble book: ${title}`);
+}
+
+// =====================================================
+// Task 02.02
+
+logFirstAvailable(getAllBooks());
