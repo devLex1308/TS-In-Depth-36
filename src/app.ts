@@ -73,6 +73,10 @@ function calcTotalPages() {
   }, BigInt(0));
 }
 
+function createCustomerID(name: string, id: number): string {
+  return `${id}-${name}`;
+}
+
 // =====================================================
 // Task 02.02
 
@@ -83,4 +87,12 @@ function calcTotalPages() {
 // logBookTitles(getBookTitlesByCategory(Category.Javascript));
 
 // console.log(getBookAuthorByIndex(2));
-console.log(calcTotalPages());
+// console.log(calcTotalPages());
+
+const myId: string = createCustomerID('Sasha', 23);
+console.log({ myId });
+let idGenerator: (name: string, id: number) => string;
+idGenerator = (name: string, id: number) => `${id}-${name}`;
+idGenerator = createCustomerID;
+
+console.log(idGenerator('Tania', 27));
