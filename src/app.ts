@@ -30,6 +30,8 @@ interface Book {
   markDamaged?(reason: string): void;
 };
 
+type BookProperties = keyof Book;
+
 interface DamageLogger {
   (reason: string): void;
 }
@@ -162,6 +164,11 @@ function printBook(book: Book): void {
   console.log(`${book.title} by ${book.author}`);
 }
 
+function getProperty(book: Book, prop: BookProperties): any {
+  const value = book[prop];
+  return typeof value === 'function' ? value.name : value;
+}
+
 // =====================================================
 // Task 02.02
 
@@ -243,13 +250,19 @@ function printBook(book: Book): void {
 
 // Task 04.04
 
-const offer: any = {
-  book: {
-    title: 'Essential TypeScript',
-  },
-};
+// const offer: any = {
+//   book: {
+//     title: 'Essential TypeScript',
+//   },
+// };
 
-console.log(offer.magazine);
-console.log(offer.magazine?.getTitle());
-console.log(offer.book.getTitle?.());
-console.log(offer.book.authors?.[0]);
+// console.log(offer.magazine);
+// console.log(offer.magazine?.getTitle());
+// console.log(offer.book.getTitle?.());
+// console.log(offer.book.authors?.[0]);
+
+// Task 04.05
+
+console.log(getProperty(getAllBooks()[0], 'title'));
+console.log(getProperty(getAllBooks()[0], 'markDamaged'));
+console.log(getProperty(getAllBooks()[0], 'isbn'));
