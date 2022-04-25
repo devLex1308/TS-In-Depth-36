@@ -227,15 +227,29 @@ function printBook(book: Book): void {
 
 // Task 04.03
 
-const favoriteAuthor: Author = {
-  name: 'Artur',
-  email: 'a@i.ua',
-  numBooksPublished: 3,
+// const favoriteAuthor: Author = {
+//   name: 'Artur',
+//   email: 'a@i.ua',
+//   numBooksPublished: 3,
+// };
+
+// const favoriteLibrarian: Librarian = {
+//   name: 'Artur',
+//   email: 'a@i.ua',
+//   department: 'history',
+//   assistCustomer: (custName: string, bookTitle: string) => { },
+// };
+
+
+// Task 04.04
+
+const offer: any = {
+  book: {
+    title: 'Essential TypeScript',
+  },
 };
 
-const favoriteLibrarian: Librarian = {
-  name: 'Artur',
-  email: 'a@i.ua',
-  department: 'history',
-  assistCustomer: (custName: string, bookTitle: string) => { },
-};
+console.log(offer.magazine);
+console.log(offer.magazine?.getTitle());
+console.log(offer.book.getTitle?.());
+console.log(offer.book.authors?.[0]);
