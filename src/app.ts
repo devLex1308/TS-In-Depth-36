@@ -33,6 +33,9 @@ interface Book {
 
 type BookProperties = keyof Book;
 
+type PersonBook = Person & Book;
+type BookOrUndefined = Book | undefined;
+
 interface DamageLogger {
   (reason: string): void;
 }
@@ -49,6 +52,11 @@ interface Author extends Person {
 interface Librarian extends Person {
   department: string;
   assistCustomer: (custName: string, bookTitle: string) => void;
+}
+
+interface TOptions {
+  duration?: number;
+  speed?: number;
 }
 
 function getAllBooks(): readonly Book[] {
@@ -113,7 +121,7 @@ function createCustomer(name: string, age?: number, city?: string): void {
   }
 }
 
-function getBookByID(id: Book['id']): Book | undefined {
+function getBookByID(id: Book['id']): BookOrUndefined {
   const books = getAllBooks();
   return books.find(book => book.id === id);
 }
@@ -168,6 +176,12 @@ function printBook(book: Book): void {
 function getProperty(book: Book, prop: BookProperties): any {
   const value = book[prop];
   return typeof value === 'function' ? value.name : value;
+}
+
+function setDefaultConfig(optopns: TOptions): TOptions {
+  optopns.duration ??= 100;
+  optopns.speed ??= 60;
+  return optopns;
 }
 abstract class ReferenceItem {
   // title: string;
@@ -350,6 +364,23 @@ class UniversityLibrarian implements Librarian {
 
 // Task 05.04
 
-const favoriteLibrarian: Librarian = new UniversityLibrarian();
-favoriteLibrarian.name = 'Tikki';
-favoriteLibrarian.assistCustomer('L', 'Story');
+// const favoriteLibrarian: Librarian = new UniversityLibrarian();
+// favoriteLibrarian.name = 'Tikki';
+// favoriteLibrarian.assistCustomer('L', 'Story');
+
+// Task 05.05
+
+// const personBook: PersonBook = {
+//   id: 1,
+//   author: 'Ann',
+//   available: false,
+//   category: Category.Angular,
+//   email: 'a@i.ua',
+//   name: 'Anna',
+//   title: 'Unknow',
+// };
+
+let o: TOptions = { speed: 23 };
+o = setDefaultConfig(o);
+console.log({ o });
+
