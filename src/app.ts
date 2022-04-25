@@ -23,6 +23,7 @@ type Book = {
   title: string;
   author: string;
   available: boolean;
+  category: Category;
 };
 
 function getAllBooks(): Book[] {
@@ -42,6 +43,12 @@ function logFirstAvailable(books: Book[]): void {
   const { title = 'Not found' } = books.find(book => book.available) || {};
 
   console.log(`First availeble book: ${title}`);
+}
+
+function getBookTitlesByCategory(category: Category) {
+  const books = getAllBooks();
+
+  return books.filter(book => book.category === category).map(({ title }) => title);
 }
 
 // =====================================================
