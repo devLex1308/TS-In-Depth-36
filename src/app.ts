@@ -34,6 +34,20 @@ interface DamageLogger {
   (reason: string): void;
 }
 
+interface Person {
+  name: string;
+  email: string;
+}
+
+interface Author extends Person {
+  numBooksPublished: number;
+}
+
+interface Librarian extends Person {
+  department: string;
+  assistCustomer: (custName: string, bookTitle: string) => void;
+}
+
 function getAllBooks(): readonly Book[] {
   const books = <const>[
     { id: 1, title: 'Refactoring JavaScript', author: 'Evan Burchard', category: Category.Javascript, available: true },
@@ -207,6 +221,21 @@ function printBook(book: Book): void {
 
 // Task 04.02
 
-const logDamage: DamageLogger = (reason: string) => console.log(`Damaged: ${reason}`);
+// const logDamage: DamageLogger = (reason: string) => console.log(`Damaged: ${reason}`);
 
-logDamage('missing back cover'); ('missing back cover');
+// logDamage('missing back cover'); ('missing back cover');
+
+// Task 04.03
+
+const favoriteAuthor: Author = {
+  name: 'Artur',
+  email: 'a@i.ua',
+  numBooksPublished: 3,
+};
+
+const favoriteLibrarian: Librarian = {
+  name: 'Artur',
+  email: 'a@i.ua',
+  department: 'history',
+  assistCustomer: (custName: string, bookTitle: string) => { },
+};
