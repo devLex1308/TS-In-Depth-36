@@ -1,4 +1,5 @@
 /* eslint-disable no-redeclare */
+/* eslint-disable no-underscore-dangle */
 showHello('greeting', 'TypeScript');
 
 function showHello(divName: string, name: string) {
@@ -169,6 +170,47 @@ function getProperty(book: Book, prop: BookProperties): any {
   return typeof value === 'function' ? value.name : value;
 }
 
+class ReferenceItem {
+  // title: string;
+  // year: number;
+
+  // constructor(newTitle: string, newYear: number) {
+  //   console.log('Creating a new ReferenceItem');
+
+  //   this.title = newTitle;
+  //   this.year = newYear;
+  // }
+  #id: number;
+  static departmen: string = 'Reserch Department';
+
+  constructor(id: number, public title: string, private year: number) {
+    console.log('Creating a new ReferenceItem');
+    this.#id = id;
+  }
+
+  printItem(): void {
+    console.log(`${this.title} was published in ${this.year}`);
+    console.log(`Department: ${ReferenceItem.departmen}`);
+    console.log(`Department: ${Object.getPrototypeOf(this).constructor.departmen}`);
+  }
+
+  getID(): number {
+    return this.#id;
+  }
+
+  private _publisher: string;
+
+  get publisher(): string {
+    return this._publisher;
+  }
+
+  set publisher(newPublisher) {
+    this._publisher = newPublisher;
+  }
+
+
+}
+
 // =====================================================
 // Task 02.02
 
@@ -263,6 +305,15 @@ function getProperty(book: Book, prop: BookProperties): any {
 
 // Task 04.05
 
-console.log(getProperty(getAllBooks()[0], 'title'));
-console.log(getProperty(getAllBooks()[0], 'markDamaged'));
-console.log(getProperty(getAllBooks()[0], 'isbn'));
+// console.log(getProperty(getAllBooks()[0], 'title'));
+// console.log(getProperty(getAllBooks()[0], 'markDamaged'));
+// console.log(getProperty(getAllBooks()[0], 'isbn'));
+
+// Task 05.01
+
+const ref = new ReferenceItem(1, 'Learn TypeScript', 2022);
+console.log({ ref });
+ref.printItem();
+ref.publisher = 'abc';
+console.log(ref.publisher);
+console.log(ref.getID());
