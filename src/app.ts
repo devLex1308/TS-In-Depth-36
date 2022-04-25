@@ -26,8 +26,13 @@ interface Book {
   available: boolean;
   category: Category;
   pages?: number;
-  markDamaged?: (reason: string) => void;
+  // markDamaged?: (reason: string) => void;
+  markDamaged?(reason: string): void;
 };
+
+interface DamageLogger {
+  (reason: string): void;
+}
 
 function getAllBooks(): readonly Book[] {
   const books = <const>[
@@ -186,17 +191,22 @@ function printBook(book: Book): void {
 
 // Task 04.01
 
-const myBook: Book = {
-  id: 5,
-  title: 'Colors, Backgrounds, and Gradients',
-  author: 'Eric A. Meyer',
-  available: true,
-  category: Category.CSS,
-  // year: 2015,
-  // copies: 3
-  markDamaged: (reason: string) => console.log(`Damaged: ${reason}`),
-};
+// const myBook: Book = {
+//   id: 5,
+//   title: 'Colors, Backgrounds, and Gradients',
+//   author: 'Eric A. Meyer',
+//   available: true,
+//   category: Category.CSS,
+//   // year: 2015,
+//   // copies: 3
+//   markDamaged: (reason: string) => console.log(`Damaged: ${reason}`),
+// };
 
-printBook(myBook);
-myBook.markDamaged('missing back cover');
+// printBook(myBook);
+// myBook.markDamaged('missing back cover');
 
+// Task 04.02
+
+const logDamage: DamageLogger = (reason: string) => console.log(`Damaged: ${reason}`);
+
+logDamage('missing back cover'); ('missing back cover');
