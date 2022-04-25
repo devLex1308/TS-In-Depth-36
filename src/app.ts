@@ -19,15 +19,17 @@ type Category2 = {
 };
 
 
-type Book = {
+interface Book {
   id: number;
   title: string;
   author: string;
   available: boolean;
   category: Category;
+  pages?: number;
+  markDamaged?: (reason: string) => void;
 };
 
-function getAllBooks() {
+function getAllBooks(): readonly Book[] {
   const books = <const>[
     { id: 1, title: 'Refactoring JavaScript', author: 'Evan Burchard', category: Category.Javascript, available: true },
     { id: 2, title: 'JavaScript Testing', author: 'Liang Yuxian Eugene', category: Category.Javascript, available: false },
@@ -89,7 +91,7 @@ function createCustomer(name: string, age?: number, city?: string): void {
   }
 }
 
-function getBookByID(id: Book['id']): Book {
+function getBookByID(id: Book['id']): Book | undefined {
   const books = getAllBooks();
   return books.find(book => book.id === id);
 }
@@ -137,6 +139,10 @@ function bookTitleTransform(title: any): string | never {
   return title.split('').reverse().join('');
 }
 
+function printBook(book: Book): void {
+  console.log(`${book.title} by ${book.author}`);
+}
+
 // =====================================================
 // Task 02.02
 
@@ -175,5 +181,22 @@ function bookTitleTransform(title: any): string | never {
 
 // Task 03.04
 
-console.log(bookTitleTransform('abc'));
+// console.log(bookTitleTransform('abc'));
 // console.log(bookTitleTransform(123));
+
+// Task 04.01
+
+const myBook: Book = {
+  id: 5,
+  title: 'Colors, Backgrounds, and Gradients',
+  author: 'Eric A. Meyer',
+  available: true,
+  category: Category.CSS,
+  // year: 2015,
+  // copies: 3
+  markDamaged: (reason: string) => console.log(`Damaged: ${reason}`),
+};
+
+printBook(myBook);
+myBook.markDamaged('missing back cover');
+
