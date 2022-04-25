@@ -51,7 +51,13 @@ function getBookTitlesByCategory(category: Category) {
   return books.filter(book => book.category === category).map(({ title }) => title);
 }
 
+function logBookTitles(books: string[]): void {
+  books.forEach(book => console.log(book));
+}
+
 // =====================================================
 // Task 02.02
 
-logFirstAvailable(getAllBooks());
+// logFirstAvailable(getAllBooks());
+
+logBookTitles(getBookTitlesByCategory(Category.Javascript));
