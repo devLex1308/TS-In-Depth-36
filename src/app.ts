@@ -57,8 +57,20 @@ function logBookTitles(books: string[]): void {
 
 function getBookAuthorByIndex(index: number): [title: string, author: string] {
   const books = getAllBooks();
-  const { title = 'not found', author = 'not found' } = books[index] || {}
-  return [title, author]
+  const { title = 'not found', author = 'not found' } = books[index] || {};
+  return [title, author];
+}
+
+function calcTotalPages() {
+  const data = [
+    { lib: 'libName1', books: 1_000_000_000, avgPagesPerBook: 250 },
+    { lib: 'libName2', books: 5_000_000_000, avgPagesPerBook: 300 },
+    { lib: 'libName3', books: 3_000_000_000, avgPagesPerBook: 280 }];
+
+  return data.reduce((count, lib) => {
+    count += BigInt(lib.books) * BigInt(lib.avgPagesPerBook);
+    return count;
+  }, BigInt(0));
 }
 
 // =====================================================
@@ -70,4 +82,5 @@ function getBookAuthorByIndex(index: number): [title: string, author: string] {
 
 // logBookTitles(getBookTitlesByCategory(Category.Javascript));
 
-console.log(getBookAuthorByIndex(2));
+// console.log(getBookAuthorByIndex(2));
+console.log(calcTotalPages());
