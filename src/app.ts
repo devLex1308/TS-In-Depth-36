@@ -1,5 +1,7 @@
-import { setDefaultConfig } from './functions';
-import type { Logger, TOptions } from './interfaces';
+import { printRefBook, setDefaultConfig } from './functions';
+import type { Librarian, Logger, TOptions } from './interfaces';
+import RefBook from './encyclopedia';
+import { UniversityLibrarian } from './classes';
 
 showHello('greeting', 'TypeScript');
 
@@ -119,14 +121,15 @@ function showHello(divName: string, name: string) {
 // console.log(ref.getID());
 
 // Task 05.03
-// const refBook = new Encyclopedia(1, 'Learn TypeScript', 2022, 3);
+const refBook = new RefBook(1, 'Learn TypeScript', 2022, 3);
 // console.log({ refBook });
 // refBook.printItem();
 // refBook.printCatation();
 
 // Task 05.04
 
-// const favoriteLibrarian: Librarian = new UniversityLibrarian();
+const favoriteLibrarian: Librarian = new UniversityLibrarian();
+favoriteLibrarian.name = 'Anna';
 // favoriteLibrarian.name = 'Tikki';
 // favoriteLibrarian.assistCustomer('L', 'Story');
 
@@ -146,3 +149,5 @@ let o: TOptions = { speed: 23 };
 o = setDefaultConfig(o);
 console.log({ o });
 
+printRefBook(refBook);
+printRefBook(favoriteLibrarian);

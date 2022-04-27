@@ -2,7 +2,7 @@
 
 import * as Interfaces from './interfaces';
 
-abstract class ReferenceItem {
+export abstract class ReferenceItem {
   // title: string;
   // year: number;
 
@@ -41,22 +41,6 @@ abstract class ReferenceItem {
   }
 
   abstract printCatation(): void;
-}
-
-class Encyclopedia extends ReferenceItem {
-  constructor(id: number, title: string, year: number, public edition: number) {
-    super(id, title, year);
-
-  }
-
-  override printItem(): void {
-    super.printItem();
-    console.log(`Edition: ${this.edition} ${this.year}`);
-  }
-
-  printCatation(): void {
-    console.log(`${this.title} - ${this.year}`);
-  }
 }
 
 class UniversityLibrarian implements Interfaces.Librarian {

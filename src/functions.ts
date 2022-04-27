@@ -4,6 +4,7 @@
 import { Category } from './enums';
 import { Book, TOptions } from './interfaces';
 import { BookOrUndefined, BookProperties } from './types';
+import RefBook from './encyclopedia';
 
 export function getAllBooks(): readonly Book[] {
   const books = <const>[
@@ -110,6 +111,12 @@ export function assertStringValue(value: any): asserts value is string {
   }
 }
 
+export function assertRefBookInstance(condition: any): asserts condition {
+  if (!condition) {
+    throw new Error('It is not an instance of RefBook');
+  }
+}
+
 export function bookTitleTransform(title: any): string | never {
   assertStringValue(title);
   return title.split('').reverse().join('');
@@ -128,4 +135,9 @@ export function setDefaultConfig(optopns: TOptions): TOptions {
   optopns.duration ??= 100;
   optopns.speed ??= 60;
   return optopns;
+}
+
+export function printRefBook(data: any): void {
+  assertRefBookInstance(data instanceof RefBook);
+  data.printItem();
 }
