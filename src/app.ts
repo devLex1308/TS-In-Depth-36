@@ -2,6 +2,7 @@ import { printRefBook, setDefaultConfig } from './functions';
 import type { Librarian, Logger, TOptions } from './interfaces';
 import RefBook from './classes/encyclopedia';
 import { UL } from './classes';
+import { Library } from './classes';
 
 showHello('greeting', 'TypeScript');
 
@@ -153,17 +154,25 @@ favoriteLibrarian.name = 'Anna';
 // printRefBook(favoriteLibrarian);
 
 // Task 06.05
-const flag = true;
+// const flag = true;
 
-if (flag) {
-  import('./classes').then(module => {
-    const reader = module.Reader;
-    console.log({ reader });
-  }).catch(err => console.log(err));
-}
+// if (flag) {
+//   import('./classes').then(module => {
+//     const reader = module.Reader;
+//     console.log({ reader });
+//   }).catch(err => console.log(err));
+// }
 
-if (flag) {
-  const module = await import('./classes');
-  const reader = module.Reader;
-  console.log({ reader });
-}
+// if (flag) {
+//   const module = await import('./classes');
+//   const reader = module.Reader;
+//   console.log({ reader });
+// }
+
+// Task 06.06
+let lib: Library; // = new Library();
+lib = {
+  id: 1,
+  name: 'Unknow',
+  address: 'Kyiv',
+};
