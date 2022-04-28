@@ -1,7 +1,5 @@
 /* eslint-disable no-underscore-dangle */
 
-import * as Interfaces from './interfaces';
-
 export abstract class ReferenceItem {
   // title: string;
   // year: number;
@@ -42,14 +40,3 @@ export abstract class ReferenceItem {
 
   abstract printCatation(): void;
 }
-
-class UniversityLibrarian implements Interfaces.Librarian {
-  name: string;
-  email: string;
-  department: string;
-  assistCustomer(custName: string, bookTitle: string) {
-    console.log(`${this.name} is assisting ${custName} with the book ${bookTitle}`);
-  }
-}
-
-export { Encyclopedia, UniversityLibrarian };

@@ -1,7 +1,7 @@
 import { printRefBook, setDefaultConfig } from './functions';
 import type { Librarian, Logger, TOptions } from './interfaces';
-import RefBook from './encyclopedia';
-import { UniversityLibrarian } from './classes';
+import RefBook from './classes/encyclopedia';
+import { UL } from './classes';
 
 showHello('greeting', 'TypeScript');
 
@@ -128,7 +128,7 @@ const refBook = new RefBook(1, 'Learn TypeScript', 2022, 3);
 
 // Task 05.04
 
-const favoriteLibrarian: Librarian = new UniversityLibrarian();
+const favoriteLibrarian: Librarian = new UL.UniversityLibrarian();
 favoriteLibrarian.name = 'Anna';
 // favoriteLibrarian.name = 'Tikki';
 // favoriteLibrarian.assistCustomer('L', 'Story');
