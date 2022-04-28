@@ -145,9 +145,25 @@ favoriteLibrarian.name = 'Anna';
 //   title: 'Unknow',
 // };
 
-let o: TOptions = { speed: 23 };
-o = setDefaultConfig(o);
-console.log({ o });
+// let o: TOptions = { speed: 23 };
+// o = setDefaultConfig(o);
+// console.log({ o });
 
-printRefBook(refBook);
-printRefBook(favoriteLibrarian);
+// printRefBook(refBook);
+// printRefBook(favoriteLibrarian);
+
+// Task 06.05
+const flag = true;
+
+if (flag) {
+  import('./classes').then(module => {
+    const reader = module.Reader;
+    console.log({ reader });
+  }).catch(err => console.log(err));
+}
+
+if (flag) {
+  const module = await import('./classes');
+  const reader = module.Reader;
+  console.log({ reader });
+}
