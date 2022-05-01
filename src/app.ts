@@ -1,8 +1,9 @@
-import { printRefBook, setDefaultConfig } from './functions';
-import type { Librarian, Logger, TOptions } from './interfaces';
+import { printRefBook, purge, setDefaultConfig } from './functions';
+import type { Book, Librarian, Logger, TOptions } from './interfaces';
 import RefBook from './classes/encyclopedia';
 import { UL } from './classes';
-import { Library } from './classes';
+import { type Library } from './classes';
+import { Category } from './enums';
 
 showHello('greeting', 'TypeScript');
 
@@ -170,9 +171,21 @@ favoriteLibrarian.name = 'Anna';
 // }
 
 // Task 06.06
-let lib: Library; // = new Library();
-lib = {
-  id: 1,
-  name: 'Unknow',
-  address: 'Kyiv',
-};
+// let lib: Library; // = new Library();
+// lib = {
+//   id: 1,
+//   name: 'Unknow',
+//   address: 'Kyiv',
+// };
+
+// Task 07.01
+
+const inventory: Book[] = [
+  { id: 10, title: 'The C Programming Language', author: 'K & R', available: true, category: Category.Software },
+  { id: 11, title: 'Code Complete', author: 'Steve McConnell', available: true, category: Category.Software },
+  { id: 12, title: '8-Bit Graphics with Cobol', author: 'A. B.', available: true, category: Category.Software },
+  { id: 13, title: 'Cool autoexec.bat Scripts!', author: 'C. D.', available: true, category: Category.Software }
+];
+
+const result: Book[] = purge(inventory);
+console.log(result);
