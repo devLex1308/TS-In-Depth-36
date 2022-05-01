@@ -1,8 +1,8 @@
 import { printRefBook, purge, setDefaultConfig } from './functions';
-import type { Book, Librarian, Logger, TOptions } from './interfaces';
+import type { Book, Librarian, Logger, TOptions, Magazine } from './interfaces';
 import RefBook from './classes/encyclopedia';
 import { UL } from './classes';
-import { type Library } from './classes';
+import { type Library, Shelf } from './classes';
 import { Category } from './enums';
 
 showHello('greeting', 'TypeScript');
@@ -187,5 +187,20 @@ const inventory: Book[] = [
   { id: 13, title: 'Cool autoexec.bat Scripts!', author: 'C. D.', available: true, category: Category.Software }
 ];
 
-const result: Book[] = purge(inventory);
-console.log(result);
+// const result: Book[] = purge(inventory);
+// console.log(result);
+
+const bookShelf = new Shelf<Book>();
+inventory.forEach(book => bookShelf.add(book));
+console.log(bookShelf.getFirst());
+
+const magazines: Magazine[] = [
+  { title: 'Programming Language Monthly', publisher: 'Code Mags' },
+  { title: 'Literary Fiction Quarterly', publisher: 'College Press' },
+  { title: 'Five Points', publisher: 'GSU' }
+];
+
+const magazineShelf = new Shelf<Magazine>();
+magazines.forEach(book => magazineShelf.add(book));
+
+console.log(magazineShelf.getFirst());
