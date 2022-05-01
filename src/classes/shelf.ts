@@ -1,4 +1,6 @@
-export default class Shelf<T> {
+import { ShelfItem } from '../interfaces';
+
+export default class Shelf<T extends ShelfItem> {
   private items: T[] = [];
   add(item: T): void {
     this.items.push(item);
@@ -6,5 +8,13 @@ export default class Shelf<T> {
 
   getFirst(): T {
     return this.items[0];
+  }
+
+  find(title: string): T {
+    return this.items.find(item => item.title === title);
+  }
+
+  printTitels(): void {
+    this.items.forEach(item => console.log(item.title));
   }
 }

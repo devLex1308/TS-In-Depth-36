@@ -1,4 +1,4 @@
-import { printRefBook, purge, setDefaultConfig } from './functions';
+import { getAllBooks, getObjectProperty, printRefBook, purge, setDefaultConfig } from './functions';
 import type { Book, Librarian, Logger, TOptions, Magazine } from './interfaces';
 import RefBook from './classes/encyclopedia';
 import { UL } from './classes';
@@ -190,17 +190,22 @@ const inventory: Book[] = [
 // const result: Book[] = purge(inventory);
 // console.log(result);
 
-const bookShelf = new Shelf<Book>();
-inventory.forEach(book => bookShelf.add(book));
-console.log(bookShelf.getFirst());
+// const bookShelf = new Shelf<Book>();
+// inventory.forEach(book => bookShelf.add(book));
+// console.log(bookShelf.getFirst());
 
-const magazines: Magazine[] = [
-  { title: 'Programming Language Monthly', publisher: 'Code Mags' },
-  { title: 'Literary Fiction Quarterly', publisher: 'College Press' },
-  { title: 'Five Points', publisher: 'GSU' }
-];
+// const magazines: Magazine[] = [
+//   { title: 'Programming Language Monthly', publisher: 'Code Mags' },
+//   { title: 'Literary Fiction Quarterly', publisher: 'College Press' },
+//   { title: 'Five Points', publisher: 'GSU' }
+// ];
 
-const magazineShelf = new Shelf<Magazine>();
-magazines.forEach(book => magazineShelf.add(book));
+// const magazineShelf = new Shelf<Magazine>();
+// magazines.forEach(book => magazineShelf.add(book));
 
-console.log(magazineShelf.getFirst());
+// console.log(magazineShelf.getFirst());
+// console.log(magazineShelf.printTitels());
+// console.log(magazineShelf.find('Five Points'));
+
+const result = getObjectProperty(getAllBooks()[0], 'author');
+console.log({ result });
