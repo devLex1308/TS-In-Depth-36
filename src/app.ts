@@ -1,9 +1,10 @@
-import { getAllBooks, getObjectProperty, printRefBook, purge, setDefaultConfig } from './functions';
+import { createCustomer, getAllBooks, getObjectProperty, printRefBook, purge, setDefaultConfig } from './functions';
 import type { Book, Librarian, Logger, TOptions, Magazine } from './interfaces';
 import RefBook from './classes/encyclopedia';
 import { UL } from './classes';
 import { type Library, Shelf } from './classes';
 import { Category } from './enums';
+import { BookRequiredFields, UpdatedBook, СreateCustomerFunctionType } from './types';
 
 showHello('greeting', 'TypeScript');
 
@@ -209,3 +210,21 @@ const inventory: Book[] = [
 
 const result = getObjectProperty(getAllBooks()[0], 'author');
 console.log({ result });
+
+const bookRequiredFields: BookRequiredFields = {
+  author: 'Po',
+  id: 1,
+  title: '911',
+  available: false,
+  category: Category.Angular,
+  pages: 10,
+  markDamaged: (s: string) => console.log(s),
+
+};
+
+const updatedBook: UpdatedBook = {
+  id: 1,
+};
+
+const p: Parameters<СreateCustomerFunctionType> = ['Anna'];
+createCustomer(...p);
