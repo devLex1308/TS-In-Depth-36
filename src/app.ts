@@ -238,8 +238,20 @@ const inventory: Book[] = [
 
 // Task 08.02
 
+// const obj = new UL.UniversityLibrarian();
+// console.log({ obj });
+
+// obj.name = 'Tania';
+// obj['printLibrarian']();
+
+// Task 08.03
+
 const obj = new UL.UniversityLibrarian();
 console.log({ obj });
+const proto = Object.getPrototypeOf(obj);
+console.log(proto);
+// proto.assistFaculty = null;
+// proto.teachCommunity = null;
+// obj.teachCommunity = null;
+obj.assistFaculty = null;
 
-obj.name = 'Tania';
-obj['printLibrarian']();
