@@ -257,5 +257,10 @@ const inventory: Book[] = [
 
 // Task 08.04
 
-const enc = new RefBook(1, 'Learn TypeScript', 2022, 3);
-enc.printItem();
+// const enc = new RefBook(1, 'Learn TypeScript', 2022, 3);
+// enc.printItem();
+
+// Task 08.05
+const obj = new UL.UniversityLibrarian();
+console.log({ obj });
+obj.assistCustomer('Sasha', 'Learn TypeScript');
