@@ -17,3 +17,13 @@ export type UpdatedBook = Partial<Book>;
 
 export type AuthorWoEmail = Omit<Person, 'email'>;
 export type СreateCustomerFunctionType = typeof createCustomer;
+
+type fn = (a: string, b: number, c: boolean) => Symbol;
+
+type Param1 = <T>(a: T, b: number, c: boolean) => Symbol;
+type Param2 = <T>(a: string, b: T, c: boolean) => Symbol;
+type Param3 = <T>(a: string, b: number, c: T) => Symbol;
+
+type P1 = fn;
+type P2 = fn;
+type P3 = fn;
