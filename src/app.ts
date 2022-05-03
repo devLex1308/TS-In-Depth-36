@@ -208,23 +208,30 @@ const inventory: Book[] = [
 // console.log(magazineShelf.printTitels());
 // console.log(magazineShelf.find('Five Points'));
 
-const result = getObjectProperty(getAllBooks()[0], 'author');
-console.log({ result });
+// const result = getObjectProperty(getAllBooks()[0], 'author');
+// console.log({ result });
 
-const bookRequiredFields: BookRequiredFields = {
-  author: 'Po',
-  id: 1,
-  title: '911',
-  available: false,
-  category: Category.Angular,
-  pages: 10,
-  markDamaged: (s: string) => console.log(s),
+// const bookRequiredFields: BookRequiredFields = {
+//   author: 'Po',
+//   id: 1,
+//   title: '911',
+//   available: false,
+//   category: Category.Angular,
+//   pages: 10,
+//   markDamaged: (s: string) => console.log(s),
 
-};
+// };
 
-const updatedBook: UpdatedBook = {
-  id: 1,
-};
+// const updatedBook: UpdatedBook = {
+//   id: 1,
+// };
 
-const p: Parameters<СreateCustomerFunctionType> = ['Anna'];
-createCustomer(...p);
+// const p: Parameters<СreateCustomerFunctionType> = ['Anna'];
+// createCustomer(...p);
+
+// Task 08.01
+const obj = new UL.UniversityLibrarian();
+console.log({ obj });
+obj.assistCustomer = null;
+UL.UniversityLibrarian['a'] = 1;
+UL.UniversityLibrarian.prototype['b'] = 1;
