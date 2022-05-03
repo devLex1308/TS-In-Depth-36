@@ -1,5 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 
+import { timeout } from "./decorators";
+
 export abstract class ReferenceItem {
   // title: string;
   // year: number;
@@ -18,6 +20,7 @@ export abstract class ReferenceItem {
     this.#id = id;
   }
 
+  @timeout(5000)
   printItem(): void {
     console.log(`${this.title} was published in ${this.year}`);
     console.log(`Department: ${ReferenceItem.departmen}`);

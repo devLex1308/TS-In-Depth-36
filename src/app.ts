@@ -124,7 +124,7 @@ function showHello(divName: string, name: string) {
 // console.log(ref.getID());
 
 // Task 05.03
-const refBook = new RefBook(1, 'Learn TypeScript', 2022, 3);
+// const refBook = new RefBook(1, 'Learn TypeScript', 2022, 3);
 // console.log({ refBook });
 // refBook.printItem();
 // refBook.printCatation();
@@ -246,12 +246,16 @@ const inventory: Book[] = [
 
 // Task 08.03
 
-const obj = new UL.UniversityLibrarian();
-console.log({ obj });
-const proto = Object.getPrototypeOf(obj);
-console.log(proto);
+// const obj = new UL.UniversityLibrarian();
+// console.log({ obj });
+// const proto = Object.getPrototypeOf(obj);
+// console.log(proto);
 // proto.assistFaculty = null;
 // proto.teachCommunity = null;
 // obj.teachCommunity = null;
-obj.assistFaculty = null;
+// obj.assistFaculty = null;
 
+// Task 08.04
+
+const enc = new RefBook(1, 'Learn TypeScript', 2022, 3);
+enc.printItem();
