@@ -1,7 +1,8 @@
 import * as Interfaces from '../interfaces';
-import { sealed } from './decorators';
+import { logger, sealed } from './decorators';
 
-@sealed('UniversityLibrarian')
+// @sealed('UniversityLibrarian')
+@logger
 class UniversityLibrarian implements Interfaces.Librarian {
   name: string;
   email: string;

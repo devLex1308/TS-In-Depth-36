@@ -230,8 +230,16 @@ const inventory: Book[] = [
 // createCustomer(...p);
 
 // Task 08.01
+// const obj = new UL.UniversityLibrarian();
+// console.log({ obj });
+// obj.assistCustomer = null;
+// UL.UniversityLibrarian['a'] = 1;
+// UL.UniversityLibrarian.prototype['b'] = 1;
+
+// Task 08.02
+
 const obj = new UL.UniversityLibrarian();
 console.log({ obj });
-obj.assistCustomer = null;
-UL.UniversityLibrarian['a'] = 1;
-UL.UniversityLibrarian.prototype['b'] = 1;
+
+obj.name = 'Tania';
+obj['printLibrarian']();
