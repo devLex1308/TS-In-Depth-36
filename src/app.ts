@@ -1,4 +1,4 @@
-import { createCustomer, getAllBooks, getObjectProperty, printRefBook, purge, setDefaultConfig } from './functions';
+import { createCustomer, getAllBooks, getBooksByCategory, getBookTitlesByCategory, getObjectProperty, logCategorySearch, printRefBook, purge, setDefaultConfig } from './functions';
 import type { Book, Librarian, Logger, TOptions, Magazine } from './interfaces';
 import RefBook from './classes/encyclopedia';
 import { UL } from './classes';
@@ -273,6 +273,11 @@ const inventory: Book[] = [
 
 // Task 08.07
 
-const enc = new RefBook(1, 'tt', 2022, 3);
-enc.copies = 10;
-console.log({ enc });
+// const enc = new RefBook(1, 'tt', 2022, 3);
+// enc.copies = 10;
+// console.log({ enc });
+
+// Task 09.01
+console.log('Begin');
+getBooksByCategory(Category.Javascript, logCategorySearch);
+console.log('End');
