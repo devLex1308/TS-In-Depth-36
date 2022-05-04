@@ -116,3 +116,19 @@ export function format(pref: string = 'Mr./Mrs.') {
     makeProperty(target, propertyName, value => `${pref} ${value}`)
   };
 }
+
+export function positiveInteger(target: any, propName: string, descriptor: PropertyDescriptor): PropertyDescriptor {
+  const originalSet = descriptor.set;
+
+  descriptor.set = function (value: number) {
+    if (value < 2 || !Number.isInteger(value)) {
+      throw new Error('Invalid value');
+    }
+
+    if (originalSet) {
+      originalSet.call(this, value);
+    }
+  };
+
+  return descriptor;
+}
