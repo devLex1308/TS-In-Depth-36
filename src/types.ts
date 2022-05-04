@@ -1,4 +1,4 @@
-import { createCustomer } from './functions';
+import { createCustomer, getBooksByCategoryPromise } from './functions';
 import { Book, Person } from './interfaces';
 
 type Category2 = {
@@ -20,10 +20,15 @@ export type СreateCustomerFunctionType = typeof createCustomer;
 
 type fn = (a: string, b: number, c: boolean) => Symbol;
 
-type Param1 = <T>(a: T, b: number, c: boolean) => Symbol;
-type Param2 = <T>(a: string, b: T, c: boolean) => Symbol;
-type Param3 = <T>(a: string, b: number, c: T) => Symbol;
+type Param1<T> = T extends (a: infer R, b: number, c: boolean) => Symbol ? R : never;
+type Param2<T> = T extends (a: string, b: infer R, c: boolean) => Symbol ? R : never;
+type Param3<T> = T extends (a: string, b: number, c: infer R) => Symbol ? R : never;
 
 type P1 = fn;
 type P2 = fn;
 type P3 = fn;
+
+export type Unpromisify<T> = T extends Promise<infer R> ? R : never;
+
+type FRT = ReturnType<typeof getBooksByCategoryPromise>;
+type RT = Unpromisify<FRT>;
