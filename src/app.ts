@@ -1,4 +1,4 @@
-import { createCustomer, getAllBooks, getBooksByCategory, getBooksByCategoryPromise, getBookTitlesByCategory, getObjectProperty, logCategorySearch, printRefBook, purge, setDefaultConfig } from './functions';
+import { createCustomer, getAllBooks, getBooksByCategory, getBooksByCategoryPromise, getBookTitlesByCategory, getObjectProperty, logCategorySearch, logSearchResults, printRefBook, purge, setDefaultConfig } from './functions';
 import type { Book, Librarian, Logger, TOptions, Magazine } from './interfaces';
 import RefBook from './classes/encyclopedia';
 import { UL } from './classes';
@@ -283,10 +283,15 @@ const inventory: Book[] = [
 // console.log('End');
 
 // Task 09.02
+// console.log('Begin');
+// getBooksByCategoryPromise(Category.Javascript).then(titles => {
+//   console.log(titles);
+//   return Promise.resolve(titles.length);
+// }).then(len => console.log(len)).catch(console.log);
+// getBooksByCategoryPromise(Category.Software).then(console.log).catch(console.log);
+// console.log('End');
+
+// Task 09.03
 console.log('Begin');
-getBooksByCategoryPromise(Category.Javascript).then(titles => {
-  console.log(titles);
-  return Promise.resolve(titles.length);
-}).then(len => console.log(len)).catch(console.log);
-getBooksByCategoryPromise(Category.Software).then(console.log).catch(console.log);
+logSearchResults(Category.Javascript).catch(console.log);
 console.log('End');
