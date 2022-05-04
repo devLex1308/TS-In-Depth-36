@@ -1,10 +1,10 @@
 import * as Interfaces from '../interfaces';
-import { logger, logParameter, sealed, writable } from './decorators';
+import { format, logger, logParameter, sealed, writable } from './decorators';
 
 // @sealed('UniversityLibrarian')
 // @logger
 class UniversityLibrarian implements Interfaces.Librarian {
-  name: string;
+  @format() name: string;
   email: string;
   department: string;
   assistCustomer(@logParameter custName: string, @logParameter bookTitle: string) {

@@ -261,6 +261,12 @@ const inventory: Book[] = [
 // enc.printItem();
 
 // Task 08.05
+// const obj = new UL.UniversityLibrarian();
+// console.log({ obj });
+// obj.assistCustomer('Sasha', 'Learn TypeScript');
+
+// Task 08.06
+
 const obj = new UL.UniversityLibrarian();
 console.log({ obj });
 obj.assistCustomer('Sasha', 'Learn TypeScript');
